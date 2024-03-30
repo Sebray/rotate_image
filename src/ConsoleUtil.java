@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class ConsoleUtil {
@@ -5,11 +6,11 @@ public class ConsoleUtil {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String getStringValue(String msg){
+    public static String getStringValue(String msg, String filter){
         System.out.println(msg);
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
-        while (value.isBlank()){
+        while (value.isBlank() || value.matches(filter) || isIncorrectFileName(value)){
             System.out.println("Ошибка. " + msg);
             value = scanner.nextLine();
         }
@@ -30,5 +31,10 @@ public class ConsoleUtil {
             }
         }
         return value;
+    }
+
+    public static boolean isIncorrectFileName(String fileName){
+        File file = new File(fileName);
+        return !(file.canRead() && file.canWrite());
     }
 }

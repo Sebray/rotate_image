@@ -6,15 +6,16 @@ import java.io.IOException;
 //Реализовать поворот изборажения на произвольный градус
 public class Main {
     public static void main(String[] args) {
-        String fileName = ConsoleUtil.getStringValue("Введите путь изображения");
-        String resultFileName = ConsoleUtil.getStringValue("Введите название измененного изображения");
-        int angle = ConsoleUtil.getIntegerValue("Введите угол поворотоа");
-        BufferedImage image;
+        String fileName = ConsoleUtil.getStringValue("Введите путь изображения", "^\\w*.(jpg|png|jpeg)");
+        String resultFileName = ConsoleUtil.getStringValue("Введите название измененного изображения",
+                "^\\w*.(jpg|png|jpeg)");
+        int angle = ConsoleUtil.getIntegerValue("Введите угол поворота");
+        BufferedImage image = null;
 
         try {
             image = ImageIO.read(new File(fileName));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Файл с названием " + fileName + " не может быть прочтен");
         }
 
         BufferedImage resImage;
@@ -27,9 +28,10 @@ public class Main {
         Smoothing.smoothOut(resImage);
 
         try {
-            ImageIO.write(resImage, "png", new File(resultFileName));
+            ImageIO.write(resImage, fileName.substring(fileName.lastIndexOf('.') + 1),
+                    new File(resultFileName));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Файл с названием " + fileName + " не может быть записан");
         }
     }
 }
