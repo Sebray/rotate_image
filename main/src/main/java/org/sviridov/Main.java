@@ -1,3 +1,5 @@
+package org.sviridov;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,7 +9,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         String fileName = ConsoleUtil.getStringValue("Введите путь изображения", "^\\w*.(jpg|png|jpeg)");
-        String resultFileName = ConsoleUtil.getStringValue("Введите название измененного изображения",
+        String resultFileName = ConsoleUtil.getStringValue("Введите путь измененного изображения",
                 "^\\w*.(jpg|png|jpeg)");
         int angle = ConsoleUtil.getIntegerValue("Введите угол поворота");
         BufferedImage image = null;
@@ -28,8 +30,7 @@ public class Main {
         Smoothing.smoothOut(resImage);
 
         try {
-            ImageIO.write(resImage, fileName.substring(fileName.lastIndexOf('.') + 1),
-                    new File(resultFileName));
+            ImageIO.write(resImage, "png", new File(resultFileName));
         } catch (IOException e) {
             System.out.println("Файл с названием " + fileName + " не может быть записан");
         }

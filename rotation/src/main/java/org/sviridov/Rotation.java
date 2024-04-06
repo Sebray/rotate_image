@@ -1,3 +1,5 @@
+package org.sviridov;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

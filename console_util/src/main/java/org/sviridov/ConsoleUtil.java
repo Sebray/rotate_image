@@ -1,4 +1,7 @@
+package org.sviridov;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ConsoleUtil {
@@ -33,8 +36,17 @@ public class ConsoleUtil {
         return value;
     }
 
-    public static boolean isIncorrectFileName(String fileName){
+    public static boolean isIncorrectFileName(String fileName) {
         File file = new File(fileName);
-        return !(file.canRead() && file.canWrite());
+        if (file.exists()) {
+            return !(file.canRead() && file.canWrite());
+        } else {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                return true;
+            }
+            return false;
+        }
     }
 }
