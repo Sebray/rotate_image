@@ -18,8 +18,8 @@ public class Rotation {
                 + Math.abs(image.getHeight() * Math.sin(radian))) + 1);
 
         this.image = image;
-        this.newWidth = newWidth + 10;
-        this.newHeight = newHeight + 10;
+        this.newWidth = newWidth+5;
+        this.newHeight = newHeight+5;
         center = new Point((int) Math.round((image.getWidth() + 1) / 2.0 - 1),
                 (int) Math.round((image.getHeight() + 1) / 2.0 - 1));
         newCenter = new Point((int) Math.round((newWidth + 1) / 2.0 - 1) + 1,

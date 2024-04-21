@@ -5,27 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b5f9b26-5afd-4967-9198-482cebb1e5c6" name="Changes" comment="Реализация поворота изображения">
-      <change afterPath="$PROJECT_DIR$/console_util.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/console_util/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rotation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rotation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/console_util/src/test/java/org/sviridov/ConsoleUtilTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/test/java/org/sviridov/MainTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rotation/src/test/java/org/sviridov/RotationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rotation/src/test/java/org/sviridov/SmoothingTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rotate_image.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rotate_image.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsoleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/org/sviridov/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Rotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Smoothing.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Smoothing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console_util.iml" beforeDir="false" afterPath="$PROJECT_DIR$/console_util.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console_util/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/console_util/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/org/sviridov/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/org/sviridov/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rotation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rotation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Rotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Smoothing.java" beforeDir="false" afterPath="$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Smoothing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -51,45 +57,136 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "19",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.42413792",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.sviridov" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn dependency:tree" />
+      <command value="mvn -P jacoco4 install" />
+      <command value="mvn clean org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent install org.jacoco:jacoco-maven-plugin:0.8.12:report " />
+      <command value="mvn validate" />
+      <command value="mvn clean test" />
+      <command value="mvn jacoco:prepare-agent test jacoco:report" />
+      <command value="mvn jacoco:report -X" />
+      <command value="mvn -X org.jacoco:jacoco-maven-plugin:report " />
+      <command value="mvn org.jacoco:jacoco-maven-plugin:report  -x" />
+      <command value="mvn org.jacoco:jacoco-maven-plugin:report  -X" />
+      <command value="mvn jacoco:report" />
+      <command value="mvn test" />
+      <command value="mvn clean test jacoco:report jacoco:check@default-check" />
       <command value="mvn clean install" />
+      <command value="mvn org.jacoco:jacoco-maven-plugin:report " />
+      <command value="mvn clean test org.jacoco:jacoco-maven-plugin:report" />
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.sviridov.Main" />
+  <component name="RunManager" selected="JUnit.MainTest.testWriteResultImage">
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sviridov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.sviridov" />
+      <option name="MAIN_CLASS_NAME" value="org.sviridov.MainTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="rotate_image" />
+    <configuration name="MainTest.initChoices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sviridov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.sviridov" />
+      <option name="MAIN_CLASS_NAME" value="org.sviridov.MainTest" />
+      <option name="METHOD_NAME" value="initChoices" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="rotate_image" />
-      <option name="filePath" />
+    <configuration name="MainTest.testDoRotation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sviridov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.sviridov" />
+      <option name="MAIN_CLASS_NAME" value="org.sviridov.MainTest" />
+      <option name="METHOD_NAME" value="testDoRotation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.testDoSmoothing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sviridov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.sviridov" />
+      <option name="MAIN_CLASS_NAME" value="org.sviridov.MainTest" />
+      <option name="METHOD_NAME" value="testDoSmoothing" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.testWriteResultImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sviridov.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.sviridov" />
+      <option name="MAIN_CLASS_NAME" value="org.sviridov.MainTest" />
+      <option name="METHOD_NAME" value="testWriteResultImage" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainTest.testWriteResultImage" />
+        <item itemvalue="JUnit.MainTest.testDoSmoothing" />
+        <item itemvalue="JUnit.MainTest.testDoRotation" />
+        <item itemvalue="JUnit.MainTest" />
+        <item itemvalue="JUnit.MainTest.initChoices" />
       </list>
     </recent_temporary>
   </component>
@@ -102,6 +199,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711835216951</updated>
       <workItem from="1712434546436" duration="2049000" />
+      <workItem from="1713712033821" duration="27872000" />
     </task>
     <servers />
   </component>
@@ -118,5 +216,41 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rotation/src/main/java/org/sviridov/Smoothing.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/main/src/main/java/org/sviridov/Main.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/console_util/src/main/java/org/sviridov/ConsoleUtil.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

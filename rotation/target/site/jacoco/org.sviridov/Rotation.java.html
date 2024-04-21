@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rotation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">rotation</a> &gt; <a href="index.source.html" class="el_package">org.sviridov</a> &gt; <span class="el_source">Rotation.java</span></div><h1>Rotation.java</h1><pre class="source lang-java linenums">package org.sviridov;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class Rotation {
+    private double radian;
+    private BufferedImage image;
+    private int newWidth, newHeight;
+    private Point center, newCenter;
+
+<span class="fc" id="L12">    public Rotation(BufferedImage image, int angle) {</span>
+<span class="fc" id="L13">        radian = angle * Math.PI / 180;</span>
+
+<span class="fc" id="L15">        int newHeight = (int) (Math.round(Math.abs(image.getHeight() * Math.cos(radian))</span>
+<span class="fc" id="L16">                + Math.abs(image.getWidth() * Math.sin(radian))) + 1);</span>
+<span class="fc" id="L17">        int newWidth = (int) (Math.round(Math.abs(image.getWidth() * Math.cos(radian))</span>
+<span class="fc" id="L18">                + Math.abs(image.getHeight() * Math.sin(radian))) + 1);</span>
+
+<span class="fc" id="L20">        this.image = image;</span>
+<span class="fc" id="L21">        this.newWidth = newWidth+5;</span>
+<span class="fc" id="L22">        this.newHeight = newHeight+5;</span>
+<span class="fc" id="L23">        center = new Point((int) Math.round((image.getWidth() + 1) / 2.0 - 1),</span>
+<span class="fc" id="L24">                (int) Math.round((image.getHeight() + 1) / 2.0 - 1));</span>
+<span class="fc" id="L25">        newCenter = new Point((int) Math.round((newWidth + 1) / 2.0 - 1) + 1,</span>
+<span class="fc" id="L26">                (int) Math.round((newHeight + 1) / 2.0 - 1) + 1);</span>
+<span class="fc" id="L27">    }</span>
+
+    public BufferedImage rotateBySimpleMethod() {
+        int newX, newY, x, y;
+<span class="fc" id="L31">        BufferedImage res = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);</span>
+
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (int h = 0; h &lt; image.getHeight(); h++)</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (int w = 0; w &lt; image.getWidth(); w++) {</span>
+<span class="fc" id="L35">                y = image.getHeight() - 1 - h - center.y;</span>
+<span class="fc" id="L36">                x = image.getWidth() - 1 - w - center.x;</span>
+
+<span class="fc" id="L38">                newX = (int) (Math.round(x * Math.cos(radian) - y * Math.sin(radian)));</span>
+<span class="fc" id="L39">                newY = (int) (Math.round(x * Math.sin(radian) + y * Math.cos(radian)));</span>
+
+<span class="fc" id="L41">                newY = newCenter.y - newY;</span>
+<span class="fc" id="L42">                newX = newCenter.x - newX;</span>
+
+<span class="fc" id="L44">                res.setRGB(newX, newY, image.getRGB(w, h));</span>
+            }
+<span class="fc" id="L46">        return res;</span>
+    }
+
+    public BufferedImage rotateBy3ShareMethod() {
+        int newX, newY, x, y;
+        double tangent;
+
+<span class="nc" id="L53">        BufferedImage res = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);</span>
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        for (int h = 0; h &lt; image.getHeight(); h++)</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            for (int w = 0; w &lt; image.getWidth(); w++) {</span>
+<span class="nc" id="L57">                y = image.getHeight() - 1 - h - center.y;</span>
+<span class="nc" id="L58">                x = image.getWidth() - 1 - w - center.x;</span>
+
+                // 1 сдиг
+<span class="nc" id="L61">                tangent = Math.tan(radian / 2);</span>
+<span class="nc" id="L62">                newX = (int) Math.round(x - y * tangent);</span>
+<span class="nc" id="L63">                newY = y;</span>
+
+                // 2 сдиг
+<span class="nc" id="L66">                newY = (int) Math.round(newX * Math.sin(radian) + newY);</span>
+
+                //3 сдиг
+<span class="nc" id="L69">                newX = (int) Math.round(newX - newY * tangent);</span>
+
+<span class="nc" id="L71">                newY = newCenter.y - newY;</span>
+<span class="nc" id="L72">                newX = newCenter.x - newX;</span>
+
+<span class="nc" id="L74">                res.setRGB(newX, newY, image.getRGB(w, h));</span>
+            }
+<span class="nc" id="L76">        return res;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -16,6 +16,14 @@ public class Smoothing {
             }
     }
 
+    public static void smoothOutByNearPixel(BufferedImage image) {
+        for (int i = 1; i < image.getWidth() - 1; i++)
+            for (int j = 1; j < image.getHeight() - 1; j++) {
+                if (image.getRGB(i, j) == 0)
+                    image.setRGB(i, j, image.getRGB(i + 1, j));
+            }
+    }
+
     private static boolean existAllNeighboring(int x, int y, BufferedImage image) {
         for (int i = -1; i <= 1; i += 2)
             for (int j = -1; j <= 1; j += 2)

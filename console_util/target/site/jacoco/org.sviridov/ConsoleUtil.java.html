@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsoleUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console_util</a> &gt; <a href="index.source.html" class="el_package">org.sviridov</a> &gt; <span class="el_source">ConsoleUtil.java</span></div><h1>ConsoleUtil.java</h1><pre class="source lang-java linenums">package org.sviridov;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Set;
+
+public class ConsoleUtil {
+<span class="nc" id="L9">    private ConsoleUtil(){</span>
+<span class="nc" id="L10">        throw new IllegalStateException(&quot;Utility class&quot;);</span>
+    }
+
+    public static String getStringValue(String msg, String filter){
+<span class="fc" id="L14">        System.out.println(msg);</span>
+<span class="fc" id="L15">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L16">        String value = scanner.nextLine();</span>
+<span class="pc bpc" id="L17" title="2 of 6 branches missed.">        while (value.isBlank() || !value.matches(filter) || isIncorrectFileName(value)){</span>
+<span class="fc" id="L18">            System.out.println(&quot;Ошибка. &quot; + msg);</span>
+<span class="fc" id="L19">            value = scanner.nextLine();</span>
+        }
+<span class="fc" id="L21">        return value;</span>
+    }
+
+    public static int getIntegerValue(String msg){
+<span class="fc" id="L25">        System.out.println(msg);</span>
+<span class="fc" id="L26">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L27">        int value = 0;</span>
+<span class="fc" id="L28">        boolean isInteger = false;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        while(!isInteger) {</span>
+            try {
+<span class="fc" id="L31">                value = Integer.parseInt(scanner.nextLine().trim());</span>
+<span class="fc" id="L32">                isInteger = true;</span>
+<span class="nc" id="L33">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L34">                System.out.println(&quot;Ошибка. Введите число&quot;);</span>
+<span class="pc" id="L35">            }</span>
+        }
+<span class="fc" id="L37">        return value;</span>
+    }
+
+    public static int getIntegerValue(String msg, Set&lt;Integer&gt; correctValues){
+<span class="fc" id="L41">        System.out.println(msg);</span>
+<span class="fc" id="L42">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L43">        int value = 0;</span>
+<span class="fc" id="L44">        boolean isInteger = false;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        while(!isInteger) {</span>
+            try {
+<span class="fc" id="L47">                value = Integer.parseInt(scanner.nextLine().trim());</span>
+<span class="fc" id="L48">                isInteger = correctValues.contains(value);;</span>
+<span class="nc" id="L49">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L50">                System.out.println(&quot;Ошибка. Введите число&quot;);</span>
+<span class="pc" id="L51">            }</span>
+        }
+<span class="fc" id="L53">        return value;</span>
+    }
+
+    public static boolean isIncorrectFileName(String fileName) {
+<span class="fc" id="L57">        File file = new File(fileName);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (file.exists()) {</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">            return !(file.canRead() &amp;&amp; file.canWrite());</span>
+        } else {
+            try {
+<span class="fc" id="L62">                file.createNewFile();</span>
+<span class="nc" id="L63">            } catch (IOException e) {</span>
+<span class="nc" id="L64">                return true;</span>
+<span class="fc" id="L65">            }</span>
+<span class="fc" id="L66">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

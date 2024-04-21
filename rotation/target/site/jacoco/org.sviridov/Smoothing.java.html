@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Smoothing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">rotation</a> &gt; <a href="index.source.html" class="el_package">org.sviridov</a> &gt; <span class="el_source">Smoothing.java</span></div><h1>Smoothing.java</h1><pre class="source lang-java linenums">package org.sviridov;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class Smoothing {
+<span class="nc" id="L7">    private Smoothing() {</span>
+<span class="nc" id="L8">        throw new IllegalStateException(&quot;Utility class for rotation&quot;);</span>
+    }
+
+    public static void smoothOut(BufferedImage image) {
+<span class="fc bfc" id="L12" title="All 2 branches covered.">        for (int i = 1; i &lt; image.getWidth() - 1; i++)</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">            for (int j = 1; j &lt; image.getHeight() - 1; j++) {</span>
+<span class="pc bpc" id="L14" title="1 of 4 branches missed.">                if (image.getRGB(i, j) == 0 &amp;&amp; existAllNeighboring(i, j, image))</span>
+<span class="fc" id="L15">                    image.setRGB(i, j, calcAverageColor(image, i, j).getRGB());</span>
+            }
+<span class="fc" id="L17">    }</span>
+
+    public static void smoothOutByNearPixel(BufferedImage image) {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (int i = 1; i &lt; image.getWidth() - 1; i++)</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            for (int j = 1; j &lt; image.getHeight() - 1; j++) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">                if (image.getRGB(i, j) == 0)</span>
+<span class="fc" id="L23">                    image.setRGB(i, j, image.getRGB(i + 1, j));</span>
+            }
+<span class="fc" id="L25">    }</span>
+
+    private static boolean existAllNeighboring(int x, int y, BufferedImage image) {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int i = -1; i &lt;= 1; i += 2)</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            for (int j = -1; j &lt;= 1; j += 2)</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">                if (image.getRGB(x + i, y + j) == 0)</span>
+<span class="nc" id="L31">                    return false;</span>
+<span class="fc" id="L32">        return true;</span>
+    }
+
+    private static float doLerp(float s, float e, float t) {
+<span class="fc" id="L36">        return s + (e - s) * t;</span>
+    }
+
+    private static float doBlerp(float c00, float c10, float c01, float c11, float tx, float ty) {
+<span class="fc" id="L40">        return doLerp(doLerp(c00, c10, tx), doLerp(c01, c11, tx), ty);</span>
+    }
+
+    private static Color calcAverageColor(BufferedImage image, int x, int y) {
+<span class="fc" id="L44">        float gx = ((float) x) / image.getWidth();</span>
+<span class="fc" id="L45">        float gy = ((float) y) / image.getHeight();</span>
+
+<span class="fc" id="L47">        Color c00 = new Color(image.getRGB(x - 1, y));</span>
+<span class="fc" id="L48">        Color c10 = new Color(image.getRGB(x + 1, y));</span>
+<span class="fc" id="L49">        Color c01 = new Color(image.getRGB(x, y + 1));</span>
+<span class="fc" id="L50">        Color c11 = new Color(image.getRGB(x, y - 1));</span>
+<span class="fc" id="L51">        x = (int) gx;</span>
+<span class="fc" id="L52">        y = (int) gy;</span>
+
+<span class="fc" id="L54">        int red = (int) doBlerp(c00.getRed(), c10.getRed(), c01.getRed(), c11.getRed(), gx - x, gy - y);</span>
+<span class="fc" id="L55">        int green = (int) doBlerp(c00.getGreen(), c10.getGreen(), c01.getGreen(), c11.getGreen(), gx - x, gy - y);</span>
+<span class="fc" id="L56">        int blue = (int) doBlerp(c00.getBlue(), c10.getBlue(), c01.getBlue(), c11.getBlue(), gx - x, gy - y);</span>
+<span class="fc" id="L57">        return new Color(red, green, blue);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

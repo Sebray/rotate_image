@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">main</a> &gt; <a href="index.source.html" class="el_package">org.sviridov</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package org.sviridov;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+//Реализовать поворот изборажения на произвольный градус
+<span class="fc" id="L14">public class Main {</span>
+    public static final String REGULAR = &quot;.+(?=\\\\*)\\\\*[A-Za-z\\_0-9\\.-]+.(png|jpg|jpeg)&quot;;
+<span class="fc" id="L16">    public static final Integer FIRST = 1;</span>
+<span class="fc" id="L17">    public static final Integer SECOND = 2;</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L20">        List&lt;String&gt; names = getFileNames();</span>
+<span class="nc" id="L21">        int angle = ConsoleUtil.getIntegerValue(&quot;Введите угол поворота&quot;);</span>
+<span class="nc" id="L22">        BufferedImage image = null;</span>
+
+        try {
+<span class="nc" id="L25">            image = ImageIO.read(new File(names.get(0)));</span>
+<span class="nc" id="L26">        } catch (IOException e) {</span>
+<span class="nc" id="L27">            System.out.println(&quot;Файл с названием &quot; + names.get(0) + &quot; не может быть прочтен&quot;);</span>
+<span class="nc" id="L28">        }</span>
+
+<span class="nc" id="L30">        BufferedImage resImage = doRotation(image, angle);</span>
+<span class="nc" id="L31">        doSmoothing(resImage);</span>
+<span class="nc" id="L32">        writeResultImage(names.get(1), resImage);</span>
+<span class="nc" id="L33">    }</span>
+
+    public static List&lt;String&gt; getFileNames() {
+<span class="nc" id="L36">        ArrayList&lt;String&gt; names = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L37">        names.add(ConsoleUtil.getStringValue(&quot;Введите путь изображения&quot;, REGULAR));</span>
+<span class="nc" id="L38">        names.add(ConsoleUtil.getStringValue(&quot;Введите путь измененного изображения&quot;, REGULAR));</span>
+<span class="nc" id="L39">        return names;</span>
+    }
+
+    public static Set&lt;Integer&gt; initChoices() {
+<span class="fc" id="L43">        HashSet&lt;Integer&gt; choices = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L44">        choices.add(FIRST);</span>
+<span class="fc" id="L45">        choices.add(SECOND);</span>
+<span class="fc" id="L46">        return choices;</span>
+    }
+
+    public static Integer doChoice() {
+<span class="fc" id="L50">        return ConsoleUtil.getIntegerValue(</span>
+                &quot;Выберите метод для сглаживания изображения.\n 1 - билинейная интерполяция,&quot; +
+                        &quot; 2 – ближайший сосед&quot;,
+<span class="fc" id="L53">                initChoices());</span>
+    }
+
+    public static void doSmoothing(BufferedImage resImage) {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (Objects.equals(doChoice(), FIRST)) {</span>
+<span class="fc" id="L58">            Smoothing.smoothOut(resImage);</span>
+        } else {
+<span class="fc" id="L60">            Smoothing.smoothOutByNearPixel(resImage);</span>
+        }
+<span class="fc" id="L62">    }</span>
+
+    public static BufferedImage doRotation(BufferedImage image, Integer angle) {
+<span class="fc" id="L65">        Rotation rotation = new Rotation(image, angle);</span>
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">        if (Math.abs(angle) &gt;= 150 &amp;&amp; Math.abs(angle) &lt;= 210)</span>
+<span class="fc" id="L67">            return rotation.rotateBySimpleMethod();</span>
+        else
+<span class="fc" id="L69">            return rotation.rotateBy3ShareMethod();</span>
+    }
+
+    public static void writeResultImage(String name, BufferedImage image){
+        try {
+<span class="fc" id="L74">            ImageIO.write(image, &quot;png&quot;, new File(name));</span>
+<span class="nc" id="L75">        } catch (IOException e) {</span>
+<span class="nc" id="L76">            System.out.println(&quot;Файл с названием &quot; + name + &quot; не может быть записан&quot;);</span>
+<span class="fc" id="L77">        }</span>
+<span class="fc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
