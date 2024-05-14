@@ -25,10 +25,6 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class MainTest {
-
-    @InjectMocks
-    Main main = new Main();
-
     @Test
     void testInitChoices() {
         Set<Integer> expectedValues = new HashSet<>();
