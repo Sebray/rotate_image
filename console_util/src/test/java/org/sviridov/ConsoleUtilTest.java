@@ -3,6 +3,7 @@ package org.sviridov;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.HashSet;
 import java.util.UUID;
 
@@ -51,5 +52,12 @@ class ConsoleUtilTest {
         values.add(2);
 
         assertEquals(2, ConsoleUtil.getIntegerValue("testMsg", values));
+    }
+
+    @Test
+    void testIsIncorrectFileNameReturn() {
+        final String testPath = "C:\\test\\test.txt";
+        File file = new File(testPath);
+        assertTrue(file.canRead() && !ConsoleUtil.isIncorrectFileName(testPath));
     }
 }
